@@ -1,18 +1,25 @@
 <?php
+
 /**
- * ShopOfThings Child Theme Functions
+ * Storefront automatically loads the core CSS even if using a child theme as it is more efficient
+ * than @importing it in the child theme style.css file.
+ *
+ * Uncomment the line below if you'd like to disable the Storefront Core CSS.
+ *
+ * If you don't plan to dequeue the Storefront Core CSS you can remove the subsequent line and as well
+ * as the sf_child_theme_dequeue_style() function declaration.
+ */
+//add_action( 'wp_enqueue_scripts', 'sf_child_theme_dequeue_style', 999 );
+
+/**
+ * Dequeue the Storefront Parent theme core CSS
+ */
+function sf_child_theme_dequeue_style() {
+    wp_dequeue_style( 'storefront-style' );
+    wp_dequeue_style( 'storefront-woocommerce-style' );
+}
+
+/**
+ * Note: DO NOT! alter or remove the code above this text and only add your custom PHP functions below this text.
  */
 
- // Enqueue Parent- und Child-Styles korrekt
-function shopofthings_enqueue_styles() {
-    // Parent-Theme Style (Storefront)
-    wp_enqueue_style('storefront-style', get_template_directory_uri() . '/style.css');
-
-    // Child-Theme Style (wird danach geladen → überschreibt Parent)
-    wp_enqueue_style('shopofthings-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        array('storefront-style'),
-        wp_get_theme()->get('Version')
-    );
-}
-add_action('wp_enqueue_scripts', 'shopofthings_enqueue_styles', 10);
