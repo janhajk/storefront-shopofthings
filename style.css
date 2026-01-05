@@ -1,0 +1,29 @@
+/*
+ Theme Name:   ShopOfThings
+ Theme URI:    https://shopofthings.ch
+ Description:  Child Theme für ShopOfThings basierend auf Storefront
+ Author:       Jan Schär
+ Author URI:   https://thingware.ch
+ Template:     storefront
+ Version:      0.0.1
+ Text Domain:  storefront-shopofthings
+*/
+
+
+
+
+/* Importiere die Styles des Parent-Themes (Storefront) */
+@import url("../storefront/style.css");
+
+/* Hier kommen deine eigenen CSS-Anpassungen rein */
+/* Beispiel: Primärfarbe ändern */
+:root {
+    --woocommerce-primary: #a46497;     /* WooCommerce Hauptfarbe */
+    --woocommerce-primary-contrast: #fff;
+}
+
+/* Beispiel: Shop-Titel größer */
+.site-header .site-branding .site-title {
+    font-size: 2.5rem;
+}
+
